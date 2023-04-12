@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Telecom Customer Churn Prediction</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='spam-favicon.ico') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	</head>
+
+	<body style="background-color:#FC1D40;  min-height: 100vh; max-width: 800px; margin:100px;">
+
+		<!-- Website Title -->
+		<div class="container">
+			<h2 class='container-heading'><span>TELECOM CUSTOMER CHURN PREDICTION</h2>
+	        	<div class='description'>
+			</div>
+		</div>
+
+		<!-- Result -->
+		<div class="results">
+			<h1> THE CHURN PREDICTION SAYS {{prediction_text}}
+		</div>
+
+		<!-- Footer -->
+       <div class='footer'>
+           <div class="contact">
+
+           </div>
+           <p class='footer-description'></p>
+       </div>
+
+    </body>
+</html>

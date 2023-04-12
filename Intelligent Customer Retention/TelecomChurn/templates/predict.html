@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<title>Telecom Customer Churn Prediction</title>
+<head>
+
+  <style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+      
+      div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover {
+          background-color: #111;
+        }
+        </style>
+</head>
+
+<body style="min-height: 100vh; max-width: 800px;">
+    <h1>TELECOM CUSTOMER CHURN PREDICTION</h1>
+
+    <div class='container'>
+      <form action="/predict" method='post'>
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender">
+          <option value=0>Female</option>
+          <option value=1>Male</option>
+        </select>
+
+        <label for="srcitizen">Senior Citizen</label>
+        <select id="srcitizen" name="srcitizen">
+          <option value=0>No</option>
+          <option value=1>Yes</option>
+        </select>
+
+        <label for="partner">Partner</label>
+        <select id="partner" name="partner">
+          <option value=0>No</option>
+          <option value=1>Yes</option>
+        </select>
+
+        <label for="dependents">Dependents</label>
+        <select id="dependents" name="dependents">
+          <option value=0>No</option>
+          <option value=1>Yes</option>
+        </select>
+
+
+        <label for="tenure">Tenure</label>
+        <input type="text" id="tenure" name="tenure" value="0">
+
+
+        <label for="phservices">Phone Service</label>
+        <select id="phservices" name="phservices">
+          <option value=0>No</option>
+          <option value=1>Yes</option>
+        </select>
+
+        <label for="multi">Multi Lines</label>
+        <select id="multi" name="multi">
+          <option value=0>No</option>
+          <option value=1>No Phone Service</option>
+          <option value=2>Yes</option>
+        </select>
+
+        <label for="is">Internet Service</label>
+        <select id="is" name="is">
+          <option value=0>DSL</option>
+          <option value=1>FO</option>
+          <option value=2>No</option>
+        </select>
+
+        <label for="os">Online Service</label>
+        <select id="os" name="os">
+          <option value=0>N</option>
+          <option value=1>No Internet Service</option>
+          <option value=2>Yes</option>
+        </select>
+
+        <label for="ob">Online Backup</label>
+        <select id="ob" name="ob">
+          <option value=0>No</option>
+          <option value=1>No Internet Service</option>
+          <option value=2>Yes</option>
+        </select>
+
+        <label for="dp">Device Production</label>
+        <select id="dp" name="dp">
+          <option value=0>No</option>
+          <option value=1>No Internet Service</option>
+          <option value=2>Yes</option>
+        </select>
+
+        <label for="ts">Tech Support</label>
+        <select id="ts" name="ts">
+          <option value=0>No</option>
+          <option value=1>No Internet Service</option>
+          <option value=2>Yes</option>
+        </select>
+
+        <label for="stv">Streaming TV</label>
+        <select id="stv" name="stv">
+          <option value=0>No</option>
+          <option value=1>No Internet Service</option>
+          <option value=2>Yes</option>
+        </select>
+
+        <label for="stm">Streaming Movie</label>
+        <select id="stm" name="stm">
+          <option value=0>No</option>
+          <option value=1>No Internet Service</option>
+          <option value=2>Yes</option>
+        </select>
+
+
+        <label for="contract">Contract</label>
+        <select id="contract" name="contract">
+          <option value=0>Month to Month</option>
+          <option value=1>1 Year</option>
+          <option value=2>2 Years</option>
+        </select>
+
+        <label for="pmt">Payment Method</label>
+        <select id="pmt" name="pmt">
+          <option value=0>Electronic Cheque</option>
+          <option value=1>Mailed Cheque</option>
+          <option value=2>Bank Transfer</option>
+          <option value=3>Credit Card</option>
+        </select>
+
+        <label for="plb">Paperless Billing</label>
+        <select id="plb" name="plb">
+          <option value=0>No</option>
+          <option value=1>Yes</option>
+        </select>
+
+    
+        <label for="mcharges">Monthly Charges</label>
+        <input type="text" id="mcharges" name="mcharges" value="0">
+
+        <label for="tcharges">Total Charges</label>
+        <input type="text" id="tcharges" name="tcharges" value="0">
+
+
+        <input type="submit" value="Submit">
+    
+      </form>
+    </div>
+</body>
+</html>
